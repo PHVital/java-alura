@@ -22,8 +22,8 @@ public class Episodio {
 
     public Episodio() {}
 
-    public Episodio(Integer numeroEpisodio, DadosEpisodio dadosEpisodio) {
-        this.numeroEpisodio = numeroEpisodio;
+    public Episodio(Integer numeroTemporada, DadosEpisodio dadosEpisodio) {
+        this.temporada = numeroTemporada;
         this.titulo = dadosEpisodio.titulo();
         this.numeroEpisodio = dadosEpisodio.numero();
 
