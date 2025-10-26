@@ -39,11 +39,7 @@ public class AdocaoController {
     @PostMapping
     @Transactional
     public ResponseEntity<String> solicitar(@RequestBody @Valid SolicitacaoDeAdocaoDTO dados){
-        try {
-            this.service.solicitar(dados);
-        } catch (AdocaoException e) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
-        }
+        this.service.solicitar(dados);
         return ResponseEntity.ok("Adoção solicitada com sucesso!");
     }
 
