@@ -7,4 +7,8 @@ public record PetDTO(Long id, TipoPet tipo, String nome, String raca, Integer id
     public PetDTO(Pet pet) {
         this(pet.getId(), pet.getTipo(), pet.getNome(), pet.getRaca(), pet.getIdade());
     }
+
+//    public PetDTO(PetDTO petDTO) {
+//        this(petDTO.id(), petDTO.tipo(), petDTO.nome(), petDTO.raca(), petDTO.idade());
+//    }
 }

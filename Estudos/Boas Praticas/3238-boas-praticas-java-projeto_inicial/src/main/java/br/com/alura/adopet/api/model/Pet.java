@@ -1,7 +1,9 @@
 package br.com.alura.adopet.api.model;
 
+import br.com.alura.adopet.api.dto.CadastroPetDTO;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
@@ -50,6 +52,17 @@ public class Pet {
         this.adotado = adotado;
         this.abrigo = abrigo;
         this.adocao = adocao;
+    }
+
+    public Pet(Long id, TipoPet tipo, String nome, String raca, Integer idade) {
+        this.id = id;
+        this.tipo = tipo;
+        this.nome = nome;
+        this.raca = raca;
+        this.idade = idade;
+    }
+
+    public Pet(Abrigo abrigo, @Valid CadastroPetDTO dto) {
     }
 
     @Override
