@@ -36,10 +36,10 @@ public class CalculadoraProbabilidadeAdocao {
         }
 
         // penalizando pela idade avançada
-        if (idade >= 15) {
+        if (tipo == TipoPet.CACHORRO && idade >= 15) {
             nota -= 5;
         }
-        if (idade >= 10) {
+        if (tipo == TipoPet.GATO && idade >= 10) {
             nota -= 4;
         }
 
