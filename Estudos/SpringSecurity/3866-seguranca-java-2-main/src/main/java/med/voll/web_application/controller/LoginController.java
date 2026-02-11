@@ -1,8 +1,10 @@
 package med.voll.web_application.controller;
 
+import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import med.voll.web_application.domain.RegraDeNegocioException;
 import med.voll.web_application.domain.medico.DadosCadastroMedico;
+import med.voll.web_application.domain.paciente.DadosCadastroPublicoPaciente;
 import med.voll.web_application.domain.usuario.DadosAlteracaoSenha;
 import med.voll.web_application.domain.usuario.Usuario;
 import med.voll.web_application.domain.usuario.UsuarioService;
@@ -14,15 +16,18 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.time.LocalDateTime;
 
 @Controller
 public class LoginController {
 
     public static final String FORMULARIO_ALTERACAO_SENHA = "autenticacao/formulario-alteracao-senha";
-    public final UsuarioService service;
+    public final UsuarioService usuarioService;
 
-    public LoginController(UsuarioService service) {
-        this.service = service;
+    public LoginController(UsuarioService usuarioService) {
+        this.usuarioService = usuarioService;
     }
 
     @GetMapping("/login")
@@ -43,7 +48,7 @@ public class LoginController {
         }
 
         try {
-            service.alterarSenha(dados, logado);
+            usuarioService.alterarSenha(dados, logado);
             return "redirect:home";
         } catch (RegraDeNegocioException e) {
             model.addAttribute("erro", e.getMessage());
@@ -51,4 +56,5 @@ public class LoginController {
             return FORMULARIO_ALTERACAO_SENHA;
         }
     }
+
 }
